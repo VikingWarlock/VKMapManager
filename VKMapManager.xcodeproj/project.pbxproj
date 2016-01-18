@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		099AEAAF1C4D369500144094 /* VKMapManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099AEAAE1C4D369500144094 /* VKMapManager.h */; };
 		099AEAB11C4D369500144094 /* VKMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 099AEAB01C4D369500144094 /* VKMapManager.m */; };
+		099AEAB91C4D36B300144094 /* MapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 099AEAB81C4D36B300144094 /* MapHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		099AEAAB1C4D369500144094 /* libVKMapManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVKMapManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		099AEAAE1C4D369500144094 /* VKMapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKMapManager.h; sourceTree = "<group>"; };
 		099AEAB01C4D369500144094 /* VKMapManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKMapManager.m; sourceTree = "<group>"; };
+		099AEAB71C4D36B300144094 /* MapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapHelper.h; sourceTree = "<group>"; };
+		099AEAB81C4D36B300144094 /* MapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 		099AEAAD1C4D369500144094 /* VKMapManager */ = {
 			isa = PBXGroup;
 			children = (
+				099AEAB71C4D36B300144094 /* MapHelper.h */,
+				099AEAB81C4D36B300144094 /* MapHelper.m */,
 				099AEAAE1C4D369500144094 /* VKMapManager.h */,
 				099AEAB01C4D369500144094 /* VKMapManager.m */,
 			);
@@ -122,6 +127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				099AEAB91C4D36B300144094 /* MapHelper.m in Sources */,
 				099AEAB11C4D369500144094 /* VKMapManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
