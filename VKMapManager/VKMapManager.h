@@ -17,6 +17,12 @@ typedef NS_ENUM(NSInteger,VKMapPlatform) {
     VKMapPlatform_Other=2
 };
 
+typedef NS_ENUM(NSInteger,VKMapType)
+{
+    VKMapType_Normal=0,
+    VKMapType_Satellite=1
+};
+
 @protocol BMKMapViewDelegate;
 @protocol GMSMapViewDelegate;
 
@@ -51,6 +57,21 @@ typedef NS_ENUM(NSInteger,VKMapPlatform) {
 @property(nonatomic,assign)VKMapPlatform platform;
 
 /**
+ *设置地图类型.Set the map type.
+ */
+@property(nonatomic,assign)VKMapType mapType;
+
+/**
+ *设置缩放等级,Set the zoom level.
+ */
+@property(nonatomic,assign)float zoomLevel;
+
+/**
+ *设置显示用户位置.Enable showing user location
+ */
+@property(nonatomic,assign)BOOL userLocationEnable;
+
+/**
  *Register API Key for Google Map SDK
  */
 +(BOOL)registerGoogleMapWithAPIKey:(nullable NSString*)apikey;
@@ -82,9 +103,5 @@ typedef NS_ENUM(NSInteger,VKMapPlatform) {
  */
 -(void)addLine:(nonnull NSArray*)points andOptions:(nullable NSDictionary*)options;
 
-/**
- *设置缩放等级,Set the zoom level.
- */
-@property(nonatomic,assign)float zoomLevel;
 
 @end

@@ -227,7 +227,64 @@ didLongPressInfoWindowOfMarker:(GMSMarker *)marker{
     }
 }
 
+-(void)setMapType:(VKMapType)mapType
+{
+    switch (mapType) {
+        case VKMapType_Normal:
+        {
+            if (googleMap) {
+                googleMap.mapType=kGMSTypeNormal;
+            }else if (baiduMap){
+                baiduMap.mapType=BMKMapTypeStandard;
+            }
+            break;
+        }
+        case VKMapType_Satellite:
+        {
+            if (googleMap) {
+                googleMap.mapType=kGMSTypeSatellite;
+            }else if (baiduMap){
+                baiduMap.mapType=BMKMapTypeSatellite;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
 
+-(void)setZoomLevel:(float)zoomLevel
+{
+    if (googleMap) {
+        float level=zoomLevel;
+        if (zoomLevel<googleMap.minZoom) {
+            level=googleMap.minZoom;
+        }
+        if (zoomLevel>googleMap.maxZoom) {
+            level=googleMap.maxZoom;
+        }
+        [googleMap animateToZoom:level];
+    }else if(baiduMap)
+    {
+        if (zoomLevel<3) {
+            zoomLevel=3;
+        }
+        if (zoomLevel>20) {
+            zoomLevel=20;
+        }
+        [baiduMap setZoomLevel:zoomLevel];
+    }
+}
 
+-(void)setUserLocationEnable:(BOOL)userLocationEnable
+{
+
+    if (googleMap) {
+        googleMap.myLocationEnabled=userLocationEnable;
+    }
+    if (baiduMap) {
+        baiduMap.showsUserLocation=userLocationEnable;
+    }
+}
 
 @end
