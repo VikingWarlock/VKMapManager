@@ -11,8 +11,15 @@
 #import <BaiduMapKit/BaiduMapAPI_Map/BMKMapComponent.h>
 
 
-@interface VKMapManager()<BMKGeneralDelegate>
+@interface VKMapManager()<BMKGeneralDelegate,GMSMapViewDelegate,BMKMapViewDelegate>
+{
+    CLLocationCoordinate2D *locationList;
+    GMSPath *googlePath;
+    BMKPolyline *baiduPath;
+    GMSMapView *googleMap;
+    BMKMapView *baiduMap;
 
+}
 @property(nonatomic,strong)BMKMapManager *bmkManager;
 
 
@@ -28,10 +35,21 @@
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         if (share==nil) {
-            share=[[VKMapManager alloc]init];
+            share=[[VKMapManager alloc]initWithNotification];
         }
     });
     return share;
+}
+
+-(instancetype)initWithNotification
+{
+    self=[super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(WillResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(DidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+    }
+    return self;
+
 }
 
 +(BOOL)registerGoogleMapWithAPIKey:(NSString*)apikey
@@ -68,6 +86,82 @@
 }
 
 #pragma Google Delegates
+- (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture
+{
+
+}
+
+
+- (void)mapView:(GMSMapView *)mapView
+didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
+
+
+}
+- (void)mapView:(GMSMapView *)mapView
+didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+
+}
+- (void)mapView:(GMSMapView *)mapView
+didTapInfoWindowOfMarker:(GMSMarker *)marker{
+
+}
+
+- (void)mapView:(GMSMapView *)mapView
+didLongPressInfoWindowOfMarker:(GMSMarker *)marker{
+
+}
+- (void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSOverlay *)overlay
+{
+
+}
+
+- (void)mapView:(GMSMapView *)mapView didCloseInfoWindowOfMarker:(GMSMarker *)marker
+{
+
+}
+- (void)mapView:(GMSMapView *)mapView didBeginDraggingMarker:(GMSMarker *)marker
+{
+
+}
+- (void)mapView:(GMSMapView *)mapView didEndDraggingMarker:(GMSMarker *)marker
+{
+
+}
+- (void)mapView:(GMSMapView *)mapView didDragMarker:(GMSMarker *)marker
+{
+
+}
+
+- (BOOL)didTapMyLocationButtonForMapView:(GMSMapView *)mapView
+{
+    if (self.gmsDelegate) {
+        if ([self.gmsDelegate respondsToSelector:@selector(didTapMyLocationButtonForMapView:)]) {
+            return [self.gmsDelegate didTapMyLocationButtonForMapView:mapView];
+        }
+    }
+    return NO;
+}
+
+- (void)mapViewDidStartTileRendering:(GMSMapView *)mapView;
+{
+    if (self.gmsDelegate) {
+        if ([self.gmsDelegate respondsToSelector:@selector(mapViewDidStartTileRendering:)]) {
+            [self.gmsDelegate mapViewDidStartTileRendering:mapView];
+        }
+    }
+}
+
+- (void)mapViewDidFinishTileRendering:(GMSMapView *)mapView
+{
+    if (self.gmsDelegate) {
+        if ([self.gmsDelegate respondsToSelector:@selector(mapViewDidFinishTileRendering:)]) {
+            [self.gmsDelegate mapViewDidFinishTileRendering:mapView];
+        }
+    }
+}
+
+#pragma Baidu Delegates
 
 
 #pragma Application State changed
@@ -80,5 +174,60 @@
 {
     [BMKMapView didForeGround];
 }
+
+
+#pragma Public Method
+-(void)addPoint:(CLLocationCoordinate2D)coordinate andOptions:(NSDictionary *)options
+{
+
+}
+
+
+-(void)addPoints:(CLLocationCoordinate2D *)coordinates andOptions:(NSDictionary *)options
+{
+
+}
+
+
+-(void)addLine:(NSArray *)points andOptions:(NSDictionary *)options
+{
+
+}
+
+-(void)setPlatform:(VKMapPlatform)platform
+{
+    switch (platform) {
+        case VKMapPlatform_Google:
+        {
+            if (googleMap==nil) {
+                googleMap=[[GMSMapView alloc]init];
+                googleMap.delegate=self;
+            }
+            if (baiduMap) {
+                baiduMap.delegate=nil;
+                baiduMap=nil;
+            }
+            break;
+        }
+        case VKMapPlatform_Baidu:
+        {
+            if (googleMap) {
+                googleMap.delegate=self;
+                googleMap=nil;
+            }
+            if (baiduMap==nil) {
+                baiduMap=[[BMKMapView alloc]init];
+                baiduMap.delegate=self;
+            }
+
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+
+
 
 @end
