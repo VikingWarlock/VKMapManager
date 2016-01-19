@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "VKPath.h"
 
 
 typedef NS_ENUM(NSInteger,VKMapPlatform) {

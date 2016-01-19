@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		099AEAAF1C4D369500144094 /* VKMapManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 099AEAAE1C4D369500144094 /* VKMapManager.h */; };
 		099AEAB11C4D369500144094 /* VKMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 099AEAB01C4D369500144094 /* VKMapManager.m */; };
+		09C00C9D1C4E382B00608525 /* VKPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C00C9C1C4E382B00608525 /* VKPath.m */; };
+		09C00CA01C4E386100608525 /* VKPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C00C9F1C4E386100608525 /* VKPoint.m */; };
 		170A9AAEB60223F39A8E61B9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C92E370535875E7AC12828 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +31,10 @@
 		099AEAAB1C4D369500144094 /* libVKMapManager.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVKMapManager.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		099AEAAE1C4D369500144094 /* VKMapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VKMapManager.h; sourceTree = "<group>"; };
 		099AEAB01C4D369500144094 /* VKMapManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKMapManager.m; sourceTree = "<group>"; };
+		09C00C9B1C4E382B00608525 /* VKPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKPath.h; sourceTree = "<group>"; };
+		09C00C9C1C4E382B00608525 /* VKPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKPath.m; sourceTree = "<group>"; };
+		09C00C9E1C4E386100608525 /* VKPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKPoint.h; sourceTree = "<group>"; };
+		09C00C9F1C4E386100608525 /* VKPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKPoint.m; sourceTree = "<group>"; };
 		178287B1EA71EF2A56E1671D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1C9C8FFCC695EEF5C2E1A605 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C2C92E370535875E7AC12828 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +75,10 @@
 			children = (
 				099AEAAE1C4D369500144094 /* VKMapManager.h */,
 				099AEAB01C4D369500144094 /* VKMapManager.m */,
+				09C00C9B1C4E382B00608525 /* VKPath.h */,
+				09C00C9C1C4E382B00608525 /* VKPath.m */,
+				09C00C9E1C4E386100608525 /* VKPoint.h */,
+				09C00C9F1C4E386100608525 /* VKPoint.m */,
 			);
 			path = VKMapManager;
 			sourceTree = "<group>";
@@ -181,7 +191,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09C00CA01C4E386100608525 /* VKPoint.m in Sources */,
 				099AEAB11C4D369500144094 /* VKMapManager.m in Sources */,
+				09C00C9D1C4E382B00608525 /* VKPath.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

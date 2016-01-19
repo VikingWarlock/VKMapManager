@@ -94,42 +94,96 @@
 
 - (void)mapView:(GMSMapView *)mapView
 didTapAtCoordinate:(CLLocationCoordinate2D)coordinate{
-
+    if (self.gmsDelegate) {
+        if ([self.gmsDelegate respondsToSelector:@selector(mapView:didTapAtCoordinate:)]) {
+            [self.gmsDelegate mapView:mapView didTapAtCoordinate:coordinate];
+        }
+    }else
+    {
+    
+    }
 
 }
 - (void)mapView:(GMSMapView *)mapView
 didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
-
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didLongPressAtCoordinate:)]) {
+        [self.gmsDelegate mapView:mapView didLongPressAtCoordinate:coordinate];
+    }else
+    {
+    
+    }
 }
 - (void)mapView:(GMSMapView *)mapView
 didTapInfoWindowOfMarker:(GMSMarker *)marker{
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didTapInfoWindowOfMarker:)]) {
+        [self.gmsDelegate mapView:mapView didTapInfoWindowOfMarker:marker];
+    }else
+    {
+        
+    }
 
 }
 
 - (void)mapView:(GMSMapView *)mapView
 didLongPressInfoWindowOfMarker:(GMSMarker *)marker{
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didLongPressInfoWindowOfMarker:)]) {
+        [self.gmsDelegate mapView:mapView didLongPressInfoWindowOfMarker:marker];
+    }else
+    {
+        
+    }
 
 }
 - (void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSOverlay *)overlay
 {
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didTapOverlay:)]) {
+        [self.gmsDelegate mapView:mapView didTapOverlay:overlay];
+    }else
+    {
+        
+    }
 
 }
 
 - (void)mapView:(GMSMapView *)mapView didCloseInfoWindowOfMarker:(GMSMarker *)marker
 {
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didCloseInfoWindowOfMarker:)]) {
+        [self.gmsDelegate mapView:mapView didCloseInfoWindowOfMarker:marker];
+    }else
+    {
+        
+    }
 
 }
 - (void)mapView:(GMSMapView *)mapView didBeginDraggingMarker:(GMSMarker *)marker
 {
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didBeginDraggingMarker:)]) {
+        [self.gmsDelegate mapView:mapView didBeginDraggingMarker:marker];
+    }else
+    {
+        
+    }
 
 }
 - (void)mapView:(GMSMapView *)mapView didEndDraggingMarker:(GMSMarker *)marker
 {
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didEndDraggingMarker:)]) {
+        [self.gmsDelegate mapView:mapView didEndDraggingMarker:marker];
+    }else
+    {
+        
+    }
 
 }
 - (void)mapView:(GMSMapView *)mapView didDragMarker:(GMSMarker *)marker
 {
+    if (self.gmsDelegate&&[self.gmsDelegate respondsToSelector:@selector(mapView:didDragMarker:)]) {
+        [self.gmsDelegate mapView:mapView didDragMarker:marker];
+    }else
+    {
+        
+    }
 
 }
 
@@ -284,6 +338,21 @@ didLongPressInfoWindowOfMarker:(GMSMarker *)marker{
     }
     if (baiduMap) {
         baiduMap.showsUserLocation=userLocationEnable;
+    }
+}
+
+/**
+ *变态的百度地图SDK,这么多 F**king 代理方法
+ */
+-(void)setBmkDelegate:(id<BMKMapViewDelegate>)bmkDelegate
+{
+    if (bmkDelegate!=nil) {
+        if (baiduMap) {
+            baiduMap.delegate=bmkDelegate;
+        }
+    }else
+    {
+        baiduMap.delegate=self;
     }
 }
 
