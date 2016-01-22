@@ -10,4 +10,9 @@
 
 @implementation VKPoint
 
+-(CLLocationCoordinate2D)coordinate
+{   return CLLocationCoordinate2DMake(0, 0);
+}
+
+
 @end

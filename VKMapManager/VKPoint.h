@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface VKPoint : NSObject
+
+@property(nonatomic,assign)CLLocationDegrees lat;
+@property(nonatomic,assign)CLLocationDegrees lon;
 
 @end

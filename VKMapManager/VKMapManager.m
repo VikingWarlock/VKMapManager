@@ -9,7 +9,8 @@
 #import "VKMapManager.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import <BaiduMapKit/BaiduMapAPI_Map/BMKMapComponent.h>
-
+#import "VKPath.h"
+#import "VKPoint.h"
 
 @interface VKMapManager()<BMKGeneralDelegate,GMSMapViewDelegate,BMKMapViewDelegate>
 {
@@ -18,7 +19,8 @@
     BMKPolyline *baiduPath;
     GMSMapView *googleMap;
     BMKMapView *baiduMap;
-
+    VKPath *path;
+    NSMutableArray *PointArray;
 }
 @property(nonatomic,strong)BMKMapManager *bmkManager;
 
@@ -233,9 +235,13 @@ didLongPressInfoWindowOfMarker:(GMSMarker *)marker{
 #pragma Public Method
 -(void)addPoint:(CLLocationCoordinate2D)coordinate andOptions:(NSDictionary *)options
 {
-
+    [baiduMap addOverlay:nil];
 }
 
+-(void)addPoint:(CLLocation *)location
+{
+    
+}
 
 -(void)addPoints:(CLLocationCoordinate2D *)coordinates andOptions:(NSDictionary *)options
 {

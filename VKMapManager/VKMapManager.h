@@ -93,6 +93,8 @@ typedef NS_ENUM(NSInteger,VKMapType)
  *添加单个路径点并绘制.Add a point to the path and draw the path.
  */
 -(void)addPoint:(CLLocationCoordinate2D)coordinate andOptions:(nullable NSDictionary*)options;
+-(void)addPoint:(CLLocation*)location;
+
 
 /**
  *添加多个路径点并绘制.Add points to the path and draw the path.
